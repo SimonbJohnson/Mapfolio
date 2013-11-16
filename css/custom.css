@@ -128,6 +128,24 @@ a.leaflet-control-zoom-out {
   z-index: 1004;
   margin: 15px;
   height: 55px;
+  margin-top:160px;
+}
+
+#brclogo {
+  position: absolute;
+  right:0;
+  z-index: 1004;
+  margin: 15px;
+  height: 55px;
+  margin-top:75px;
+}
+
+#ifrclogo {
+  position: absolute;
+  right:0;
+  z-index: 1004;
+  margin: 15px;
+  height: 30px;
 }
 
 .navbar-brand {

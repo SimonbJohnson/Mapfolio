@@ -2,8 +2,13 @@
   {
     "name":"floodRisk",
     "thumbnail_id":"T001",
-    "extent":"AFRICA",
-    "sector":"x",
+    "caption":"Evacuated Persons",
+    "date":"14 Novemeber 2013",
+    "description":"This map shows the number of evacuated persons per province in the Philippines as recorded by the Philippines Red Cross.",
+    "image": "14_11_13_siterep_evacuated_persons_Philippines_ForArticle.png",
+    "thumb": "14_11_13_siterep_evacuated_persons_Philippines_ForArticle_thumb.png",
+    "extent":"CW",
+    "sector":"SITREP RC",
     "latitude":9.860,
     "longitude":124.060
   }

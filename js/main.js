@@ -3,7 +3,7 @@ var extentButtons = $("#extentButtons").children();
 var sectorButtons = $("#sectorButtons").children();
 var visibleExtent = [];
 var visibleSectors = [];
-var thumbnails = $(".thumbnailGallery").children();
+var thumbnails;
 
 function toggleFilter (filter, element) {
     // steps if a extent filter is clicked
@@ -243,6 +243,8 @@ function getCentroids() {
         success: function(data) {
             formatCentroids(data);
             mapDisplay();
+            //generate html to display map thumbnails
+            generatepreviewhtml(data);
         },
         error: function(e) {
             console.log(e);
@@ -275,19 +277,18 @@ function markersToMap(){
     idList = [];
     displayedPoints=[];
     // build array of visible thumbnail IDs
-    $.each(thumbnails, function (i, thumbnail){
-        if($(thumbnail).css("display") !== "none"){
-            idList.push($(thumbnail).attr("id"));
-        }
-    })
-    $.each(centroids, function (i, centroid){
-        var centroid_id = centroid.properties.thumbnail_id;
-        if ($.inArray(centroid_id, idList) !== -1){
-            displayedPoints.push(centroid);
-        }        
-    })    
-
-    marker = L.geoJson(displayedPoints, {
+    //$.each(thumbnails, function (i, thumbnail){
+    //    if($(thumbnail).css("display") !== "none"){
+    //        idList.push($(thumbnail).attr("id"));
+    //    }
+    //})
+    //$.each(centroids, function (i, centroid){
+    //    var centroid_id = centroid.properties.thumbnail_id;
+    //    if ($.inArray(centroid_id, idList) !== -1){
+    //        displayedPoints.push(centroid);
+    //    }        
+    //})    
+    marker = L.geoJson(centroids, {
         pointToLayer: function (feature, latlng) {
             return L.circleMarker(latlng, centroidOptions);
         },
@@ -347,6 +348,29 @@ $('.twitterpopup').click(function(event) {
 
     return false;
 });
+
+//generates html for preview boxes using data from centroid.json
+function generatepreviewhtml(data){
+    var html='<div id="noThumbnails" class="col-sm-12" style="display:none;">'+
+          '<h4 style="display:inline;">No maps match the filter settings.</h4>'+
+          '<button class="btn btn-default" type="button" style="display:inline; margin-left:20px;" onclick="refreshFilters()">Refresh Filters<span class="glyphicon glyphicon-refresh" style="margin-left:15px;"></span></a>'+
+        '</div>';
+    $.each(data, function(index, item){
+        var itemhtml = '<div id="'+item.thumbnail_id+'" class="col-sm-3 ALL '+item.extent+' '+item.sector+'">' +
+          '<a onclick="callModal(this);" class="thumbnail">'+
+            '<img src="img/maps/'+item.thumb+'" alt="">'+
+            '<div class="caption">'+            
+              '<h4>'+item.caption+'<br><small>'+item.date+'</small></h4>'+        
+            '</div>'+
+            '<div class="detailedDescription">'+item.description+
+            '</div>'+
+          '</a>'+
+        '</div>';
+        html=html+itemhtml;
+        $('#mappreviews').html(html);
+        thumbnails = $(".thumbnailGallery").children();
+    });
+}
 
 // start function chain to initialize map
 getWorld();

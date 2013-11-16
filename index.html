@@ -5,7 +5,7 @@
     <title>Mapfolio</title>
 
     <meta property="og:image" content="http://americanredcross.github.io/Mapfolio/img/redCross.png" />
-    <meta property="og:title" content="American Red Cross" />
+    <meta property="og:title" content="Typhoon Haiyan Mapfolio" />
     <meta property="og:description" content = "Interactive portfolio of maps produced by the International Services Department." />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div>
-          <a class="navbar-brand" href="../index.html">GIS - American Red Cross International Services</a>
+          <a class="navbar-brand" href="../index.html">Typhoon Haiyan Mapfolio</a>
         </div>
       </div>
       <div id="google_translate_element" style="position:absolute;top:3px;right:3px;"></div><script type="text/javascript">
@@ -44,6 +44,8 @@ function googleTranslateElementInit() {
     </div>    
           
     <a href="http://redcross.org"><img src="img/redcross-logo.png" id="arclogo" /></a>
+    <a href="http://redcross.org.uk"><img src="img/British_Red_Cross.png" id="brclogo" /></a>
+    <a href="http://www.ifrc.org/"><img src="img/IFRC_logo_English_CMYK.png" id="ifrclogo" /></a>
     <button class="btn btn-small btn-zoom" type="button" onClick="zoomOut();">Zoom to Extent</button>
     <div class="twitter">
       <a class="twitter twitterpopup" href="http://twitter.com/intent/tweet?text=awesome%20%40RedCross%20mapfolio&amp;url=http%3A%2F%2Fbit.ly%2F19V54xv&amp;related=RedCross"><span></span></a>
@@ -86,37 +88,22 @@ function googleTranslateElementInit() {
       <p><h6><b>Extent:</b>
       <span  id="extentButtons" style="margin-left:10px;">      
       <button id="ALL" class="btn btn-small btn-extent filtering" type="button" onclick="toggleFilter('ALL', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button> 
-      <button id="COUNTRY_WIDE" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('CW', this);">Country Wide<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+      <button id="CW" class="btn btn-small btn-extent" type="button" onclick="toggleFilter('CW', this);">Country Wide<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
       </span></h6></p>        
       <p><h6><b>Sector:</b>
       <span style="margin-left:10px;">
       <button id="refreshSectors" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('refreshSectors', this);" style="margin-right:10px;">All <span class="glyphicon glyphicon-check" style="margin-left:4px;"></span></button>              
       <div id="sectorButtons" class="allOn" style="display:inline;">
+          <button id="RC" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('RC', this);">Red Cross<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+          <button id="NRC" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('NRC', this);">Non Red Cross<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
         <button id="SITREP" class="btn btn-small btn-sector filtering" type="button" onclick="toggleFilter('SITREP', this);">Situational Reports<span class="glyphicon glyphicon-unchecked" style="margin-left:4px;"></span></button>
+        
       </div>
       <hr style="margin-bottom:0;">
       </span></h6></p>
     </div>
       <div class="container">
-      <div class="row thumbnailGallery">
-        <div id="noThumbnails" class="col-sm-12" style="display:none;">
-          <h4 style="display:inline;">No maps match the filter settings.</h4>
-          <button class="btn btn-default" type="button" style="display:inline; margin-left:20px;" onclick="refreshFilters()">Refresh Filters<span class="glyphicon glyphicon-refresh" style="margin-left:15px;"></span></a>
-        </div>
-
-        <div id="T001" class="col-sm-3 ALL SITREP CW">
-          <a onclick="callModal(this);" class="thumbnail">
-            <img src="img/maps/14_11_13_siterep_evacuated_persons_Philippines_ForArticle_thumb.png" alt="">
-            <div class="caption">            
-              <h4>Evacuated Persons<br><small>14 November 2013</small></h4>        
-            </div>
-            <div class="detailedDescription">
-            This map shows the number of evacuated persons per province in the
-            Philippines as recorded by the Philippines Red Cross.
-            </div>
-          </a>
-        </div>
-          
+      <div id="mappreviews" class="row thumbnailGallery">
       </div> <!-- /row  -->
       
     </div><!--/container-->
