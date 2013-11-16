@@ -122,7 +122,7 @@ function callModal (item) {
 	var thumbSrc = $(item).find('img').attr("src");
     var mapSrc = thumbSrc.replace("_thumb", "");
     var pdfSrc = "pdf" + mapSrc.substring(8).replace(".jpg", ".pdf");
-    pdfSrc = pdfSrc.substring(8).replace(".png", ".pdf");
+    pdfSrc = pdfSrc.replace(".png", ".pdf");
     var img_maxHeight = (windowHeight*0.60).toString() + "px";
     $(".modal-title").empty();
     $(".modal-detailedDescription").empty();
