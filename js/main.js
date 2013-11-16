@@ -179,7 +179,7 @@ function mapDisplay() {
     var remove = {fillOpacity:0, opacity:0}
     var add = {fillOpacity:1, opacity:1}
     map.on('viewreset', function() {
-        if (map.getZoom() < 6) {
+        if (map.getZoom() < 5) {
             cloudmade.setOpacity(0);
             geojson.setStyle(add);
         } else {
@@ -243,6 +243,10 @@ function getCentroids() {
         success: function(data) {
             formatCentroids(data);
             mapDisplay();
+            //set intial style based zoom
+            var remove = {fillOpacity:0, opacity:0}
+            geojson.setStyle(remove);
+            cloudmade.setOpacity(1);
             //generate html to display map thumbnails
             generatepreviewhtml(data);
         },
@@ -311,10 +315,10 @@ function markersToMap(){
     markers.addLayer(marker);
     markers.addTo(map);
     markersBounds = markers.getBounds();
-    markersBounds._northEast.lat += 5;
-    markersBounds._northEast.lng += 5;
-    markersBounds._southWest.lat -= 5;
-    markersBounds._southWest.lat -= 5;
+    markersBounds._northEast.lat += 1.5;
+    markersBounds._northEast.lng += 1.5;
+    markersBounds._southWest.lat -= 1.5;
+    markersBounds._southWest.lat -= 1.5;
     map.fitBounds(markersBounds);
 } 
 
